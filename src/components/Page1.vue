@@ -1,0 +1,5 @@
+<template>
+  <h4>
+    Page 1
+  </h4>
+</template>
