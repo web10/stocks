@@ -39,7 +39,7 @@
           { imageUrl: 'http://www.gangnamkoreanbbq.com/images/gangnam-01.jpg',
             id: 'aa',
             title: 'Gangnam'
-          },
+          }
         ]
       }
     }

@@ -91,21 +91,36 @@
         </v-btn>
         <span>Profile</span>
       </v-tooltip>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>settings</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>chat_bubble</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>help</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>lock_open</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <v-btn icon slot="activator">
+          <v-icon>notifications</v-icon>
+        </v-btn>
+        <span>Alerts</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn icon slot="activator">
+          <v-icon>settings</v-icon>
+        </v-btn>
+        <span>Settings</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn icon slot="activator">
+          <v-icon>chat_bubble</v-icon>
+        </v-btn>
+        <span>Messages</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn icon slot="activator">
+          <v-icon>help</v-icon>
+        </v-btn>
+        <span>Help</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <v-btn icon slot="activator">
+          <v-icon>lock_open</v-icon>
+        </v-btn>
+        <span>Sign In</span>
+      </v-tooltip>
     </v-toolbar>
     <main class="mt-5">
   <router-view class="mt-5"></router-view>
@@ -123,18 +138,18 @@ export default {
     dialog: false,
     drawer: null,
     menuItems: [
-      { icon: "contacts", text: "Home", name: "home", link: "/home" },
-      { icon: "content_copy", text: "Page 1", name: "page1", link: "/page1" },
-      { icon: "content_copy", text: "Page 2", name: "page2", link: "/page2" },
-      { icon: "content_copy", text: "Page 3", name: "page3", link: "/page3" },
-      { icon: "content_copy", text: "Page 4", name: "page4", link: "/page4" },
-      { icon: "content_copy", text: "Page 5", name: "page5", link: "/page5" }
+      { icon: 'contacts', text: 'Home', name: 'home', link: '/home' },
+      { icon: 'content_copy', text: 'Page 1', name: 'page1', link: '/page1' },
+      { icon: 'content_copy', text: 'Page 2', name: 'page2', link: '/page2' },
+      { icon: 'content_copy', text: 'Page 3', name: 'page3', link: '/page3' },
+      { icon: 'content_copy', text: 'Page 4', name: 'page4', link: '/page4' },
+      { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/page5' }
     ]
   }),
   props: {
     source: String
   }
-};
+}
 </script>
 
 <style scoped>
