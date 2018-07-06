@@ -13,6 +13,9 @@ import {
   VIcon,
   VGrid,
   VToolbar,
+  VTextField,
+  VTooltip,
+  VCarousel,
   transitions
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -27,7 +30,9 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-//    VTooltip, == inserting this caused error
+    VTextField,
+    VTooltip,
+    VCarousel,
     transitions
   }
 })

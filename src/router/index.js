@@ -19,12 +19,12 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
       path: '/page1',
-      name: 'Page1',
+      name: 'page1',
       component: Page1
     },
     {

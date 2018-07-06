@@ -21,25 +21,25 @@
       </v-flex>
     </v-layout>
   </v-container>
-</template
+</template>
 
 <script>
   export default {
     data () {
       return {
         meetups: [
-          { imageUrl: 'https://commons.wikimedia.org/wiki/File:Paris_-_Eiffelturm_und_Marsfeld2.jpg',
+          { imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg',
             id: 'adfadf',
             title: 'Paris'
           },
-          { imageUrl: 'https://en.wikipedia.org/wiki/File:Tower_Bridge_London_Feb_2006.jpg',
+          { imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Tower_Bridge_London_Feb_2006.jpg',
             id: 'dfg',
             title: 'London'
           },
           { imageUrl: 'http://www.gangnamkoreanbbq.com/images/gangnam-01.jpg',
             id: 'aa',
             title: 'Gangnam'
-          },
+          }
         ]
       }
     }
@@ -54,5 +54,8 @@
     color: white;
     font-size: 2em;
     padding: 20 px;
+  }
+  .jumbotron__image{
+    width: 100%;
   }
 </style>
