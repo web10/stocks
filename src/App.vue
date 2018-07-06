@@ -128,7 +128,7 @@
         { icon: 'content_copy', text: 'Page 2', name: 'page2', link: '/Page2' },
         { icon: 'content_copy', text: 'Page 3', name: 'page3', link: '/Page3' },
         { icon: 'content_copy', text: 'Page 4', name: 'page4', link: '/Page4' },
-        { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/Page4' },
+        { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/Page5' }
       ]
     }),
     props: {
