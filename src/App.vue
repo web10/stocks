@@ -74,61 +74,65 @@
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">App Template</span>
+        <router-link to="/" style="cursor: pointer" class="hidden-sm-and-down" tag="span">
+          App Template
+        </router-link>
       </v-toolbar-title>
-      <v-text-field
-        flat
-        solo-inverted
-        prepend-icon="search"
-        label="Search"
-        class="hidden-sm-and-down"
-      ></v-text-field>
+
       <v-spacer></v-spacer>
 
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>person</v-icon>
+      <!-- dashboard buttons start -->
+      <v-tooltip bottom v-for="item in dashItems" :key="item.name" >
+        <v-btn icon slot="activator" :to="item.link">
+          <v-icon>{{ item.icon }}</v-icon>
         </v-btn>
-        <span>Profile</span>
+        <span>{{ item.text }}</span>
       </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>notifications</v-icon>
-        </v-btn>
-        <span>Alerts</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>settings</v-icon>
-        </v-btn>
-        <span>Settings</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>chat_bubble</v-icon>
-        </v-btn>
-        <span>Messages</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>help</v-icon>
-        </v-btn>
-        <span>Help</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>lock_open</v-icon>
-        </v-btn>
-        <span>Sign In</span>
-      </v-tooltip>
+      <v-btn color="primary" dark>Login</v-btn>
+
+<!-- I want to incorporate Logging In Dialog to above button
+
+      <v-dialog v-model="dialog" max-width="290">
+          <v-btn slot="activator" color="primary" dark>Login</v-btn>
+          <v-content>
+            <v-container fluid fill-height>
+              <v-layout align-center justify-center>
+                <v-flex xs12 sm8 md4>
+                  <v-card class="elevation-12">
+                    <v-toolbar dark color="primary">
+                      <v-toolbar-title>Login form</v-toolbar-title>
+                    </v-toolbar>
+                    <v-card-text>
+                      <v-form>
+                        <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
+                        <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                      </v-form>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary">Login</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-content>
+          </v-dialog>
+ -->
+
     </v-toolbar>
+
     <main class="mt-5">
-  <router-view class="mt-5"></router-view>
-</main>
-<v-spacer></v-spacer>
-<v-footer app class="blue darken-3 pa-3 " dark>
-  <div>&copy; {{ new Date().getFullYear() }}</div>
-</v-footer>
+      <router-view class="mt-5"></router-view>
+    </main>
+    <v-spacer></v-spacer>
+    <v-footer app class="blue darken-3 pa-3 " dark>
+      <v-layout justify-center row wrap>
+        <div>
+          &copy; <strong>App Template</strong> {{ new Date().getFullYear() }}
+        </div>
+      </v-layout>
+    </v-footer>
   </v-app>
 </template>
 
@@ -138,12 +142,19 @@ export default {
     dialog: false,
     drawer: null,
     menuItems: [
-      { icon: 'contacts', text: 'Home', name: 'home', link: '/home' },
+      { icon: 'contacts', text: 'Intro', name: 'intro', link: '/intro' },
       { icon: 'content_copy', text: 'Page 1', name: 'page1', link: '/page1' },
       { icon: 'content_copy', text: 'Page 2', name: 'page2', link: '/page2' },
       { icon: 'content_copy', text: 'Page 3', name: 'page3', link: '/page3' },
       { icon: 'content_copy', text: 'Page 4', name: 'page4', link: '/page4' },
       { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/page5' }
+    ],
+    dashItems: [
+      { icon: 'person', text: 'Profile', name: 'profile', link: '/profile' },
+      { icon: 'notifications', text: 'Alerts', name: 'alerts', link: '/alerts' },
+      { icon: 'settings', text: 'Settings', name: 'settings', link: '/settings' },
+      { icon: 'chat_bubble', text: 'Messages', name: 'messages', link: '/messages' },
+      { icon: 'help', text: 'Help', name: 'help', link: '/help' }
     ]
   }),
   props: {

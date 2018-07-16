@@ -1,12 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Home from '@/components/Home'
+import Intro from '@/components/Intro'
 import Page1 from '@/components/Page1'
 import Page2 from '@/components/Page2'
 import Page3 from '@/components/Page3'
 import Page4 from '@/components/Page4'
 import Page5 from '@/components/Page5'
+import Profile from '@/components/Profile'
+import Alerts from '@/components/Alerts'
+import Settings from '@/components/Settings'
+import Messages from '@/components/Messages'
+import Help from '@/components/Help'
+import Signin from '@/components/Signin'
+import Signup from '@/components/Signup'
+import Landing from '@/components/Landing'
 
 Vue.use(Router)
 
@@ -18,9 +26,9 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/home',
-      name: 'home',
-      component: Home
+      path: '/intro',
+      name: 'intro',
+      component: Intro
     },
     {
       path: '/page1',
@@ -46,6 +54,46 @@ export default new Router({
       path: '/page5',
       name: 'Page5',
       component: Page5
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/alerts',
+      name: 'Alerts',
+      component: Alerts
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings
+    },
+    {
+      path: '/messages',
+      name: 'Messages',
+      component: Messages
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: Help
+    },
+    {
+      path: '/signin',
+      name: 'Signin',
+      component: Signin
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
+    },
+    {
+      path: '/landing',
+      name: 'Landing Page',
+      component: Landing
     }
   ]
 })

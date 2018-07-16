@@ -8,14 +8,14 @@
         <v-btn large router to="/meetup/new" class="info">Organize Meetup</v-btn>
       </v-flex>
     </v-layout>
-    <v-layout row wrap>
+    <v-layout row wrap mt-2>
       <v-flex xs12>
         <v-carousel>
           <v-carousel-item
             v-for="meetup in meetups"
             :src="meetup.imageUrl"
             :key="meetup.id">
-            <div class="title"> {{meetup.title}} </div>
+            <div class="title pa-2"> {{meetup.title}} </div>
           </v-carousel-item>
         </v-carousel>
       </v-flex>
@@ -53,7 +53,8 @@
     background-color: rgb(0,0,0,0.5);
     color: white;
     font-size: 2em;
-    padding: 20 px;
+    padding: 200 px;
+    align: center;
   }
   .jumbotron__image{
     width: 100%;
