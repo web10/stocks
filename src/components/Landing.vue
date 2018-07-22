@@ -22,6 +22,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
+                <v-btn color="primary" to="signup">Got to Signup</v-btn>
                 <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
               </v-card-actions>
               </v-form>

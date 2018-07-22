@@ -9,8 +9,12 @@ export default {
         }
     },
     actions:{
-       async signIn({commit},payload){
+        async signIn({commit},payload){
             return await firebase.auth().signInWithEmailAndPassword(payload.email,payload.password)
+        },
+        async signUp({commit},payload){
+            console.log("sign")
+            return await firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password);
         },
         setUser({commit},payload){
             console.log(payload)
