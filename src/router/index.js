@@ -17,83 +17,98 @@ import Signup from '@/components/Signup'
 import Landing from '@/components/Landing'
 
 Vue.use(Router)
-
+import store from '../store'
+const ifAuthenticated = (to, from, next) => {
+  if (store.state.UserStore.user ) {
+    next()
+    return
+  }
+  next('/')
+}
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'LandingPage',
+      component: Landing,
+
     },
     {
       path: '/intro',
       name: 'intro',
-      component: Intro
+      component: Intro,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/page1',
       name: 'page1',
-      component: Page1
+      component: Page1,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/page2',
       name: 'Page2',
-      component: Page2
+      component: Page2,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/page3',
       name: 'Page3',
-      component: Page3
+      component: Page3,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/page4',
       name: 'Page4',
-      component: Page4
+      component: Page4,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/page5',
       name: 'Page5',
-      component: Page5
+      component: Page5,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/alerts',
       name: 'Alerts',
-      component: Alerts
+      component: Alerts,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/settings',
       name: 'Settings',
-      component: Settings
+      component: Settings,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/messages',
       name: 'Messages',
-      component: Messages
+      component: Messages,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/help',
       name: 'Help',
-      component: Help
+      component: Help,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/signin',
       name: 'Signin',
-      component: Signin
+      component: Signin,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/signup',
       name: 'Signup',
       component: Signup
-    },
-    {
-      path: '/landing',
-      name: 'Landing Page',
-      component: Landing
     }
   ]
 })
