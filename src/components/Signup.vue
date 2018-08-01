@@ -39,42 +39,42 @@
 </template>
 <script>
 export default {
-  name:'SignUp',
-  data(){
-    return{
-      valid:false,
-      email:'',
-      password:'',
-      confirmPassword:'',
-      error:{msg:''},
-      emailRule:[
+  name: 'SignUp',
+  data () {
+    return {
+      valid: false,
+      email: '',
+      password: '',
+      confirmPassword: '',
+      error: {msg: ''},
+      emailRule: [
         v => !!v || 'Email is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
-      passwordRule:[
+      passwordRule: [
         v => !!v || 'Password is required',
         v => (v && v.length >= 6) || 'Password must be more than 6 characters'
       ],
-      confirmPasswordRule:[
+      confirmPasswordRule: [
         v => !!v || 'Confirm Password is required',
         v => (v && v == this.password) || 'Confirm Password must be same'
       ]
     }
   },
-  methods:{
-    signUp(){
-      if(this.valid){
-        this.$store.dispatch('signUp',{email:this.email,password:this.password})
-        .then(user=>{
+  methods: {
+    signUp () {
+      if (this.valid) {
+        this.$store.dispatch ('signUp', {email: this.email, password: this.password})
+        .then ( user => {
           console.log('dd')
-          this.$store.dispatch('setUser',user.user.user)
+          this.$store.dispatch('setUser', user.user.user)
           this.$router.replace('/intro')
-        },error=>{
-          this.error.msg = error.message;
-          var that = this;
-          setTimeout(function(){
+        }, error => {
+          this.error.msg = error.message
+          var that = this
+          setTimeout(function () {
             that.error.msg = ''
-          },2000)
+          }, 2000)
         })
       }
     }

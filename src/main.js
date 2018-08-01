@@ -51,28 +51,39 @@ import store from './store'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  store,
-  router,
-  components: { App },
-  template: '<App/>',
- created () {
-   let config = {
-    apiKey: "AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU",
-    authDomain: "react-event.firebaseapp.com",
-    databaseURL: "https://react-event.firebaseio.com",
-    projectId: "react-event",
-    storageBucket: "react-event.appspot.com",
-    messagingSenderId: "610338161838"
-   }
-   firebase.initializeApp(config);
-   firebase.auth().onAuthStateChanged(user=>{
-     if(user){
-      this.$store.dispatch('setUser',user);
-      this.$router.replace('/intro')
-     }else{
-       this.$router.replace('/')
-     }
-   })
+    store,
+    router,
+    components: { App },
+    template: '<App/>',
+    created () {
+      let config = {
+      /*  Alk firebase setting */
+        apiKey: "AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU",
+        authDomain: "react-event.firebaseapp.com",
+        databaseURL: "https://react-event.firebaseio.com",
+        projectId: "react-event",
+        storageBucket: "react-event.appspot.com",
+        messagingSenderId: "610338161838"
+
+        /* Danh's Veutify-template Firebase setting  start
+        apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
+        authDomain: 'vuetify-template-c69fb.firebaseapp.com',
+        databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
+        projectId: 'vuetify-template-c69fb',
+        storageBucket: 'vuetify-template-c69fb.appspot.com',
+        messagingSenderId: '361467220892'
+         Danh's Veutify-template Firebase setting  end */
+      }
+      firebase.initializeApp(config)
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          this.$store.dispatch('setUser', user)
+          this.$router.replace('/intro')
+        } else {
+          this.$router.replace('/')
+        }
+      }
+    )
  },
   data () {
     return {

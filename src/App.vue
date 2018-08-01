@@ -7,7 +7,7 @@
       app
       v-if="auth"
     >
-      <v-list dense >
+      <v-list dense>
         <template v-for="item in menuItems">
           <v-layout
             v-if="item.heading"
@@ -126,7 +126,14 @@
     <v-footer app class="blue darken-3 pa-3 " dark>
       <v-layout justify-center row wrap>
         <div>
-          &copy; <strong>App Template</strong> {{ new Date().getFullYear() }}
+          &copy; <strong>App Template</strong> {{ new Date().getFullYear() }} |
+
+          <span>  Team Login 1  |  </span>
+<!--
+          <v-tooltip top>
+            <span slot="activator" linkto="/admin" v-if="auth == item.auth"> Team Login 2 </span>
+          </v-tooltip>
+-->
         </div>
       </v-layout>
     </v-footer>
@@ -135,11 +142,11 @@
 
 <script>
 export default {
-  computed:{
-    user(){
+  computed: {
+    user () {
       return this.$store.state.UserStore.user
     },
-    auth(){
+    auth () {
       let user = this.$store.state.UserStore.user
       return !!user
     }
@@ -148,37 +155,20 @@ export default {
     dialog: false,
     drawer: null,
     menuItems: [
-      { icon: "contacts", text: "Intro", name: "intro", link: "/intro" },
-      { icon: "content_copy", text: "Page 1", name: "page1", link: "/page1" },
-      { icon: "content_copy", text: "Page 2", name: "page2", link: "/page2" },
-      { icon: "content_copy", text: "Page 3", name: "page3", link: "/page3" },
-      { icon: "content_copy", text: "Page 4", name: "page4", link: "/page4" },
-      { icon: "content_copy", text: "Page 5", name: "page5", link: "/page5" }
+      { icon: 'contacts', text: 'Intro', name: 'intro', link: '/intro' },
+      { icon: 'content_copy', text: 'Page 1', name: 'page1', link: '/page1' },
+      { icon: 'content_copy', text: 'Page 2', name: 'page2', link: '/page2' },
+      { icon: 'content_copy', text: 'Page 3', name: 'page3', link: '/page3' },
+      { icon: 'content_copy', text: 'Page 4', name: 'page4', link: '/page4' },
+      { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/page5' }
     ],
     dashItems: [
-      { icon: "person", text: "Profile", name: "profile", link: "/profile" ,auth:true},
-      {
-        icon: "notifications",
-        text: "Alerts",
-        name: "alerts",
-        link: "/alerts",
-        auth:true
-      },
-      {
-        icon: "settings",
-        text: "Settings",
-        name: "settings",
-        link: "/settings",
-        auth:true
-      },
-      {
-        icon: "chat_bubble",
-        text: "Messages",
-        name: "messages",
-        link: "/messages",
-        auth:true
-      },
-      { icon: "help", text: "Help", name: "help", link: "/help",auth:false }
+      { icon: 'person', text: 'Admin', name: 'admin', link: '/admin', auth: true },
+      { icon: 'person', text: 'Profile', name: 'profile', link: '/profile', auth: true },
+      { icon: 'notifications', text: 'Alerts', name: 'alerts', link: '/alerts', auth: true },
+      { icon: 'settings', text: 'Settings', name: 'settings', link: '/settings', auth: true },
+      { icon: 'chat_bubble', text: 'Messages', name: 'messages', link: '/messages', auth: true },
+      { icon: 'help', text: 'Help', name: 'help', link: '/help', auth: false }
     ]
   }),
   props: {
@@ -186,14 +176,14 @@ export default {
   },
   methods: {
     signOut() {
-      this.$store.dispatch('signOut');
+      this.$store.dispatch('signOut')
     }
   }
-};
+}
 </script>
 
 <style scoped>
-.border-red {
-  border-style: red 3px solid;
-}
+  .border-red {
+    border-style: red 3px solid;
+  }
 </style>

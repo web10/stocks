@@ -32,35 +32,35 @@
 </template>
 <script>
 export default {
-  name:'LandingPage',
-  data(){
+  name: 'LandingPage',
+  data () {
     return {
       valid: true,
-      error:{msg:''},
-      email:'',
-      emailRule:[
+      error: { msg: '' },
+      email: '',
+      emailRule: [
         v => !!v || 'Email is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
-      password:'',
-      passwordRule:[
+      password: '',
+      passwordRule: [
         v => !!v || 'Password is required',
         v => (v && v.length >= 6) || 'Password must be more than 6 characters'
       ]
     }
   },
-  methods:{
-    signIn(){
-      if(this.valid){
-        this.$store.dispatch('signIn',{'email':this.email,'password':this.password})
-        .then(user=>{
-          this.$store.dispatch('setUser',user.user.user)
-        },error=>{
-          this.error.msg = error.message;
-          var that = this;
-          setTimeout(function(){
+  methods: {
+    signIn () {
+      if (this.valid) {
+        this.$store.dispatch('signIn', {'email': this.email, 'password': this.password})
+        .then (user => {
+          this.$store.dispatch('setUser', user.user.user)
+        }, error => {
+          this.error.msg = error.message
+          var that = this
+          setTimeout(function () {
             that.error.msg = ''
-          },2000)
+          }, 2000)
         })
       }
     }

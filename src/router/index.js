@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Intro from '@/components/Intro'
 import Page1 from '@/components/Page1'
 import Page2 from '@/components/Page2'
@@ -15,11 +14,12 @@ import Help from '@/components/Help'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
 import Landing from '@/components/Landing'
+import Admin from '@/components/Admin'
 
 Vue.use(Router)
 import store from '../store'
 const ifAuthenticated = (to, from, next) => {
-  if (store.state.UserStore.user ) {
+  if (store.state.UserStore.user) {
     next()
     return
   }
@@ -30,8 +30,13 @@ export default new Router({
     {
       path: '/',
       name: 'LandingPage',
-      component: Landing,
-
+      component: Landing
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/intro',

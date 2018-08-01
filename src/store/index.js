@@ -1,20 +1,17 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import UserStore from './userStore'
-Vue.use(Vuex);
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-const store = new Vuex.Store({
-    modules:{
-        UserStore
+Vue.use(Vuex)
+
+export const store = new Vuex.Store(
+  {
+    state: {
+      user: {
+        id: 'daadfd'      
+      }
     },
-    state:{
-        loading:false
-    },
-    mutations:{
-        
-    },
-    actions:{
-        
-    }
-})
-export default store;
+    mutations: {},
+    actions: {},
+    getters: {}
+  }
+)
