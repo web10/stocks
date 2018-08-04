@@ -1,17 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import UserStore from './userStore'
 Vue.use(Vuex)
 
-export const store = new Vuex.Store(
+export default new Vuex.Store(
   {
+    modules: {
+      userStore: UserStore
+    },
     state: {
+      loading: true,
       user: {
-        id: 'daadfd'      
+        id: 'daadfd'
       }
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+      setLoadin (state, payload) {
+        state.loading = payload
+      }
+    },
+    actions: {
+      setLoadin ({commit}, payload) {
+        commit('setLoadin', payload)
+      }
+    },
     getters: {}
   }
 )

@@ -83,8 +83,14 @@
       <v-spacer></v-spacer>
 
       <!-- dashboard buttons start -->
+      <v-tooltip bottom v-for="item in adminItems" :key="item.name" v-if="user && user.role == '1'">
+        <v-btn icon slot="activator" :to="item.link" v-if="auth == item.auth" >
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-btn>
+        <span>{{ item.text }}</span>
+      </v-tooltip>
       <v-tooltip bottom v-for="item in dashItems" :key="item.name" >
-        <v-btn icon slot="activator" :to="item.link" v-if="auth == item.auth">
+        <v-btn icon slot="activator" :to="item.link" v-if="auth == item.auth" >
           <v-icon>{{ item.icon }}</v-icon>
         </v-btn>
         <span>{{ item.text }}</span>
@@ -120,7 +126,9 @@
     </v-toolbar>
 
     <main class="mt-5">
-      <router-view class="mt-5"></router-view>
+      <router-view class="mt-5" v-if="!loading"></router-view>
+      <v-progress-circular indeterminate color="primary" style="margin-top: 10em;margin-left: 48em;" v-if="loading"></v-progress-circular>
+
     </main>
     <v-spacer></v-spacer>
     <v-footer app class="blue darken-3 pa-3 " dark>
@@ -143,17 +151,20 @@
 <script>
 export default {
   computed: {
+    loading () {
+      return this.$store.state.loading
+    },
     user () {
-      return this.$store.state.UserStore.user
+      return this.$store.state.userStore.user
     },
     auth () {
-      let user = this.$store.state.UserStore.user
+      let user = this.$store.state.userStore.user
       return !!user
     }
   },
   data: () => ({
     dialog: false,
-    drawer: null,
+    drawer: false,
     menuItems: [
       { icon: 'contacts', text: 'Intro', name: 'intro', link: '/intro' },
       { icon: 'content_copy', text: 'Page 1', name: 'page1', link: '/page1' },
@@ -163,19 +174,21 @@ export default {
       { icon: 'content_copy', text: 'Page 5', name: 'page5', link: '/page5' }
     ],
     dashItems: [
-      { icon: 'person', text: 'Admin', name: 'admin', link: '/admin', auth: true },
       { icon: 'person', text: 'Profile', name: 'profile', link: '/profile', auth: true },
       { icon: 'notifications', text: 'Alerts', name: 'alerts', link: '/alerts', auth: true },
       { icon: 'settings', text: 'Settings', name: 'settings', link: '/settings', auth: true },
       { icon: 'chat_bubble', text: 'Messages', name: 'messages', link: '/messages', auth: true },
       { icon: 'help', text: 'Help', name: 'help', link: '/help', auth: false }
+    ],
+    adminItems: [
+      {icon: 'person', text: 'Admin', name: 'admin', link: '/admin', auth: true}
     ]
   }),
   props: {
     source: String
   },
   methods: {
-    signOut() {
+    signOut () {
       this.$store.dispatch('signOut')
     }
   }

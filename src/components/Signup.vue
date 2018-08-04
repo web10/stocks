@@ -57,19 +57,19 @@ export default {
       ],
       confirmPasswordRule: [
         v => !!v || 'Confirm Password is required',
-        v => (v && v == this.password) || 'Confirm Password must be same'
+        v => (v && v === this.password) || 'Confirm Password must be same'
       ]
     }
   },
   methods: {
     signUp () {
       if (this.valid) {
-        this.$store.dispatch ('signUp', {email: this.email, password: this.password})
-        .then ( user => {
-          console.log('dd')
-          this.$store.dispatch('setUser', user.user.user)
-          this.$router.replace('/intro')
+        this.$store.dispatch('setLoadin', true)
+        this.$store.dispatch('signUp', {email: this.email, password: this.password})
+        .then(user => {
+          console.log('Signup the user')
         }, error => {
+          this.$store.dispatch('setLoadin', false)
           this.error.msg = error.message
           var that = this
           setTimeout(function () {

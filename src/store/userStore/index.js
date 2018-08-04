@@ -1,35 +1,74 @@
 import firebase from 'firebase'
 export default {
-    state: {
-      user: null,
-      admin: null
+  state: {
+    user: null,
+    admin: null
+  },
+  mutations: {
+    setUser (state, payload) {
+      state.user = payload
     },
-    mutations: {
-      setUser ( state, payload ) {
-        state.user = payload
-      },
-      setAdmin( state, payload ) {
-        state.admin = superadmin
-      }
-    },
-    actions: {
-      async signIn({commit},payload){
-        return await firebase.auth().signInWithEmailAndPassword(payload.email,payload.password)
-      },
-      async signUp({commit},payload){
-        console.log("sign")
-        return await firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password)
-      },
-      setUser({commit},payload){
-        console.log(payload)
-        let user = {
-          email:payload.email
-        }
-        commit('setUser',user)
-      },
-      signOut({commit}){
-        firebase.auth().signOut()
-        commit('setUser',null)
-      }
+    setAdmin (state, payload) {
+      state.admin = 'superadmin'
     }
+  },
+  actions: {
+    async signIn ({commit}, payload) {
+      let user = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+      return user
+    },
+    async signUp ({commit}, payload) {
+      let user = await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+      var userId = firebase.auth().currentUser.uid
+      firebase.database().ref('/user_details/' + userId).set({email: payload.email, 'role': 0}).then(snapshot => {
+        return user
+      })
+    },
+    setUser ({commit}, payload) {
+      return new Promise((resolve, reject) => {
+        if (payload) {
+          let user = {
+            email: payload.email
+          }
+          var userId = firebase.auth().currentUser.uid
+          firebase.database().ref('/user_details/' + userId).once('value').then(snapshot => {
+            user.role = payload.email === 'admin@gmail.com' ? 1 : snapshot.val().role
+            resolve('done')
+            commit('setUser', user)
+          })
+        }
+      })
+    },
+    getAllUse ({commit}, payload) {
+      return new Promise((resolve, reject) => {
+        firebase.database().ref('/user_details').once('value').then(snapshot => {
+          let userList = []
+          let value = snapshot.val()
+          var user = firebase.auth().currentUser
+          for (let key in value) {
+            if (user.email !== value[key].email) {
+              userList.push({id: key, ...value[key]})
+            }
+          }
+          resolve(userList)
+        })
+      })
+    },
+    makeAdmin ({commit}, payload) {
+      return new Promise((resolve, reject) => {
+        let role = payload.role === 1 ? 0 : 1
+        firebase.database().ref('/user_details/' + payload.id).set({...payload, role: role}).then(error => {
+          if (error) {
+            reject(error)
+          } else {
+            resolve(payload)
+          }
+        })
+      })
+    },
+    signOut ({commit}) {
+      firebase.auth().signOut()
+      commit('setUser', null)
+    }
+  }
 }

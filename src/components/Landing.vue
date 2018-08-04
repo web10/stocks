@@ -52,14 +52,15 @@ export default {
   methods: {
     signIn () {
       if (this.valid) {
+        this.$store.dispatch('setLoadin', true)
         this.$store.dispatch('signIn', {'email': this.email, 'password': this.password})
-        .then (user => {
-          this.$store.dispatch('setUser', user.user.user)
+        .then(user => {
+          console.log('Login the user')
         }, error => {
+          this.$store.dispatch('setLoadin', false)
           this.error.msg = error.message
-          var that = this
-          setTimeout(function () {
-            that.error.msg = ''
+          setTimeout(() => {
+            this.error.msg = ''
           }, 2000)
         })
       }

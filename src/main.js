@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import firebase from 'firebase'
 import router from './router'
+import store from './store'
 import {
   Vuetify,
   VApp,
@@ -21,7 +22,9 @@ import {
   VCarousel,
   VDialog,
   transitions,
-  VAlert
+  VAlert,
+  VDataTable,
+  VProgressCircular
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -42,49 +45,56 @@ Vue.use(Vuetify, {
     VCarousel,
     VDialog,
     transitions,
-    VAlert
+    VAlert,
+    VDataTable,
+    VProgressCircular
   }
 })
 
 Vue.config.productionTip = false
-import store from './store'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-    store,
-    router,
-    components: { App },
-    template: '<App/>',
-    created () {
-      let config = {
+  store,
+  router,
+  components: {
+    App
+  },
+  template: '<App/>',
+  created () {
+    let config = {
       /*  Alk firebase setting */
-        apiKey: "AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU",
-        authDomain: "react-event.firebaseapp.com",
-        databaseURL: "https://react-event.firebaseio.com",
-        projectId: "react-event",
-        storageBucket: "react-event.appspot.com",
-        messagingSenderId: "610338161838"
+      apiKey: 'AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU',
+      authDomain: 'react-event.firebaseapp.com',
+      databaseURL: 'https://react-event.firebaseio.com',
+      projectId: 'react-event',
+      storageBucket: 'react-event.appspot.com',
+      messagingSenderId: '610338161838'
 
-        /* Danh's Veutify-template Firebase setting  start
-        apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
-        authDomain: 'vuetify-template-c69fb.firebaseapp.com',
-        databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
-        projectId: 'vuetify-template-c69fb',
-        storageBucket: 'vuetify-template-c69fb.appspot.com',
-        messagingSenderId: '361467220892'
-         Danh's Veutify-template Firebase setting  end */
-      }
-      firebase.initializeApp(config)
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.$store.dispatch('setUser', user)
+      /* Danh's Veutify-template Firebase setting  start
+      apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
+      authDomain: 'vuetify-template-c69fb.firebaseapp.com',
+      databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
+      projectId: 'vuetify-template-c69fb',
+      storageBucket: 'vuetify-template-c69fb.appspot.com',
+      messagingSenderId: '361467220892'
+       Danh's Veutify-template Firebase setting  end */
+    }
+    firebase.initializeApp(config)
+    this.$store.dispatch('setLoadin', true)
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('setUser', user).then(done => {
           this.$router.replace('/intro')
-        } else {
-          this.$router.replace('/')
-        }
+          this.$store.dispatch('setLoadin', false)
+        })
+      } else {
+        this.$store.dispatch('setLoadin', false)
+        this.$router.replace('/')
       }
-    )
- },
+    })
+  },
   data () {
     return {
       dialog: false

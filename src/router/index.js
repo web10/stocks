@@ -15,16 +15,27 @@ import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
 import Landing from '@/components/Landing'
 import Admin from '@/components/Admin'
+import store from '../store'
 
 Vue.use(Router)
-import store from '../store'
+
 const ifAuthenticated = (to, from, next) => {
-  if (store.state.UserStore.user) {
-    next()
-    return
+  console.log('dd')
+  if (store.state.userStore.user) {
+    if (to.meta.adminRole) {
+      if (store.state.userStore.user.role || store.state.userStore.user.email === 'admin@gmail.com') {
+        next()
+      } else {
+        next(from.path)
+      }
+    } else {
+      next()
+    }
+  } else {
+    next('/')
   }
-  next('/')
 }
+
 export default new Router({
   routes: [
     {
@@ -36,7 +47,10 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: Admin,
-      beforeEnter: ifAuthenticated
+      beforeEnter: ifAuthenticated,
+      meta: {
+        adminRole: true
+      }
     },
     {
       path: '/intro',
