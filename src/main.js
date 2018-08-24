@@ -71,15 +71,16 @@ new Vue({
       projectId: 'react-event',
       storageBucket: 'react-event.appspot.com',
       messagingSenderId: '610338161838'
+      /*  alk firebase end */
 
-      /* Danh's Veutify-template Firebase setting  start
+      /* Danh's Veutify-template Firebase setting
       apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
       authDomain: 'vuetify-template-c69fb.firebaseapp.com',
       databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
       projectId: 'vuetify-template-c69fb',
       storageBucket: 'vuetify-template-c69fb.appspot.com',
       messagingSenderId: '361467220892'
-       Danh's Veutify-template Firebase setting  end */
+       /* Danh's Veutify-template Firebase setting  end */
     }
     firebase.initializeApp(config)
     this.$store.dispatch('setLoadin', true)

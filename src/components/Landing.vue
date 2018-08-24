@@ -1,12 +1,30 @@
 <template>
-    <v-layout row wrap justify-center="">
-          <v-flex xs12 md12>
-            <v-card class="border">
-              <h4 class="ma-2 pa-2"> Marketing Message </h4>
+    <v-layout row wrap>
+          <v-flex xs8 md8>
+            <v-card height="700px" class="mx-5">
+              <v-card-media
+                class="white--text"
+                height="200px"
+                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+              >
+                <v-container fill-height fluid>
+                  <v-layout fill-height>
+                    <v-flex xs12 align-end flexbox>
+                      <span class="headline">Your Main App Title</span>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-media>
+              <v-card-title>
+                <div>
+                  <span>"Your Message Motto Here"</span><br>
+                  <span>Anything else here</span>
+                </div>
+              </v-card-title>
             </v-card>
           </v-flex>
           <v-flex xs4 md4>
-            <v-card class="elevation-12">
+            <v-card class="mx-5">
               <v-form ref="form" v-model="valid" lazy-validation>
               <v-toolbar dark color="primary">
                 <v-toolbar-title>Login form</v-toolbar-title>
@@ -21,8 +39,9 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
+
+                <v-btn color="primary" to="signup">Register</v-btn>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" to="signup">Got to Signup</v-btn>
                 <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
               </v-card-actions>
               </v-form>
