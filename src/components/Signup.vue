@@ -6,6 +6,8 @@
         <v-toolbar dark color="primary">
           <v-toolbar-title>Registration Form</v-toolbar-title>
         </v-toolbar>
+
+
           <v-card-text>
             <v-container>
               <v-form ref="form" v-model="valid" lazy-validation>
@@ -52,6 +54,8 @@
               </v-form>
             </v-container>
           </v-card-text>
+
+
         </v-card>
       </v-flex>
     </v-layout>

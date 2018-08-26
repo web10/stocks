@@ -25,27 +25,77 @@
           </v-flex>
           <v-flex xs4 md4>
             <v-card class="mx-5">
-              <v-form ref="form" v-model="valid" lazy-validation>
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Login form</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                <v-form>
-                  <v-alert :value="error.msg" type="error">
-                      {{error.msg}}
-                  </v-alert>
-
-                  <v-text-field  prepend-icon="person" v-model="email" label="Email" type="text" :rules="emailRule"></v-text-field>
-                  <v-text-field  prepend-icon="lock" v-model="password" label="Password" type="password" :counter="6" :rules="passwordRule"></v-text-field>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-
-                <v-btn color="primary" to="signup">Register</v-btn>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
-              </v-card-actions>
-              </v-form>
+              <v-tabs fixed-tabs>
+                <v-tab>Sign In</v-tab>
+                <v-tab>Register</v-tab>
+                <v-tab-item>
+                  <v-form ref="form" v-model="valid" lazy-validation>
+                    <v-card-text>
+                      <v-form>
+                        <v-alert :value="error.msg" type="error">
+                          {{error.msg}}
+                        </v-alert>
+                        <v-text-field  prepend-icon="person" v-model="email" label="Email" type="text" :rules="emailRule"></v-text-field>
+                        <v-text-field  prepend-icon="lock" v-model="password" label="Password" type="password" :counter="6" :rules="passwordRule"></v-text-field>
+                      </v-form>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-btn color="primary" to="signup">Register</v-btn>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
+                    </v-card-actions>
+                  </v-form>
+                </v-tab-item>
+                <v-tab-item>
+                  <v-card>
+                    <v-card-text>
+                      <v-container>
+                        <v-form ref="form" v-model="valid" lazy-validation>
+                        <v-layout row>
+                          <v-flex xs12>
+                            <v-alert :value="error.msg" type="error">
+                              {{error.msg}}
+                          </v-alert>
+                            <v-text-field name="firstName" label="First Name" v-model="firstName" type="text"></v-text-field>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                          <v-flex xs12>
+                            <v-alert :value="error.msg" type="error">
+                              {{error.msg}}
+                          </v-alert>
+                            <v-text-field name="lastName" label="Last Name" v-model="lastName" type="text"></v-text-field>
+                          </v-flex>
+                        </v-layout>
+                          <v-layout row>
+                            <v-flex xs12>
+                              <v-alert :value="error.msg" type="error">
+                                {{error.msg}}
+                            </v-alert>
+                              <v-text-field name="email" label="Mail" v-model="email" type="email" :rules="emailRule"></v-text-field>
+                            </v-flex>
+                          </v-layout>
+                          <v-layout row>
+                            <v-flex xs12>
+                              <v-text-field name="password" label="Password" v-model="password" type="password" :counter="6" :rules="passwordRule"></v-text-field>
+                            </v-flex>
+                          </v-layout>
+                          <v-layout row>
+                            <v-flex xs12>
+                              <v-text-field name="confirmPassword" label="Confirm Password" v-model="confirmPassword" type="password" :rules="confirmPasswordRule"></v-text-field>
+                            </v-flex>
+                          </v-layout>
+                          <v-layout row>
+                            <v-flex xs12>
+                              <v-btn color="primary" @click="signUp()" :disabled="!valid">Sign Up</v-btn>
+                            </v-flex>
+                          </v-layout>
+                        </v-form>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </v-tab-item>
+              </v-tabs>
             </v-card>
           </v-flex>
         </v-layout>
@@ -84,13 +134,27 @@ export default {
           }, 2000)
         })
       }
+    },
+    signUp () {
+      if (this.valid) {
+        this.$store.dispatch('setLoadin', true)
+        this.$store.dispatch('signUp', {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password})
+        .then(user => {
+          console.log('Signup the user')
+        }, error => {
+          this.$store.dispatch('setLoadin', false)
+          this.error.msg = error.message
+          var that = this
+          setTimeout(function () {
+            that.error.msg = ''
+          }, 2000)
+        })
+      }
     }
   }
 }
 </script>
-
-<style>
-  .border {
-    border-style: 1px solid black;
-  }
-</style>
