@@ -3,9 +3,29 @@
     <v-layout>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
+        <v-toolbar dark color="primary">
+          <v-toolbar-title>Registration Form</v-toolbar-title>
+        </v-toolbar>
           <v-card-text>
             <v-container>
               <v-form ref="form" v-model="valid" lazy-validation>
+
+              <v-layout row>
+                <v-flex xs12>
+                  <v-alert :value="error.msg" type="error">
+                    {{error.msg}}
+                </v-alert>
+                  <v-text-field name="firstName" label="First Name" v-model="firstName" type="text"></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-alert :value="error.msg" type="error">
+                    {{error.msg}}
+                </v-alert>
+                  <v-text-field name="lastName" label="Last Name" v-model="lastName" type="text"></v-text-field>
+                </v-flex>
+              </v-layout>
                 <v-layout row>
                   <v-flex xs12>
                     <v-alert :value="error.msg" type="error">
@@ -43,6 +63,8 @@ export default {
   data () {
     return {
       valid: false,
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -65,7 +87,11 @@ export default {
     signUp () {
       if (this.valid) {
         this.$store.dispatch('setLoadin', true)
-        this.$store.dispatch('signUp', {email: this.email, password: this.password})
+        this.$store.dispatch('signUp', {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password})
         .then(user => {
           console.log('Signup the user')
         }, error => {

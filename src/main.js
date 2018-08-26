@@ -24,6 +24,7 @@ import {
   transitions,
   VAlert,
   VDataTable,
+  VStepper,
   VProgressCircular
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
@@ -47,6 +48,7 @@ Vue.use(Vuetify, {
     transitions,
     VAlert,
     VDataTable,
+    VStepper,
     VProgressCircular
   }
 })
@@ -64,16 +66,16 @@ new Vue({
   template: '<App/>',
   created () {
     let config = {
-      /*  Alk firebase setting */
+      /*  Alk firebase setting
       apiKey: 'AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU',
       authDomain: 'react-event.firebaseapp.com',
       databaseURL: 'https://react-event.firebaseio.com',
       projectId: 'react-event',
       storageBucket: 'react-event.appspot.com',
       messagingSenderId: '610338161838'
-      /*  alk firebase end */
+        alk firebase end */
 
-      /* Danh's Veutify-template Firebase setting
+      /* Danh's Veutify-template Firebase setting */
       apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
       authDomain: 'vuetify-template-c69fb.firebaseapp.com',
       databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',

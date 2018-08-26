@@ -6,8 +6,10 @@
           <v-layout column fill-height>
             <v-card-title>
               <H2> My Profile </H2>
-              <v-spacer></v-spacer>
             </v-card-title>
+            <span class="ma-5, text-xs-center" >
+              <img src="src/assets/avatar.png" height="180px" width="180px">
+            </span>
           </v-layout>
         </v-card-media>
 

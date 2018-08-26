@@ -1,10 +1,10 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
-      :clipped="$vuetify.breakpoint.lgAndUp"
+      clipped=true
       v-model="drawer"
-      fixed
       app
+      width="200"
       v-if="auth"
     >
       <v-list dense>
@@ -97,39 +97,20 @@
       </v-tooltip>
       <span v-if="user">{{user.email}}</span>
       <v-btn color="primary" dark v-if="auth" @click="signOut()">Logout</v-btn>
-      <!-- <v-btn  color="primary" dark v-if="!auth" @click="dialog = true">Login</v-btn>
-      <v-dialog v-model="dialog" max-width="290">
-          <v-content style="padding:0">
-            <v-container fluid fill-height fill-width style="padding:0">
-              <v-layout justify-center>
-                <v-flex xs12 sm12 md12>
-                  <v-card class="elevation-12">
-                    <v-toolbar dark color="primary">
-                      <v-toolbar-title>Login form</v-toolbar-title>
-                    </v-toolbar>
-                    <v-card-text>
-                      <v-form>
-                        <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-                        <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
-                      </v-form>
-                    </v-card-text>
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
-                      <v-btn color="primary" @click="signIn()">Login</v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-content>
-          </v-dialog> -->
+
     </v-toolbar>
-
-    <main class="mt-5">
-      <router-view class="mt-5" v-if="!loading"></router-view>
-      <v-progress-circular indeterminate color="primary" style="margin-top: 10em;margin-left: 48em;" v-if="loading"></v-progress-circular>
-
-    </main>
+      <v-container fluid class="mt-5">
+        <v-layout>
+          <v-flex sm2 hidden-md-and-down>
+          </v-flex>
+          <v-flex sm12 lg11>
+            <main>
+              <router-view class="mt-5" v-if="!loading"></router-view>
+              <v-progress-circular indeterminate color="primary" style="margin-top: 10em;margin-left: 48em;" v-if="loading"></v-progress-circular>
+            </main>
+          </v-flex>
+        </v-layout>
+      </v-container>
     <v-spacer></v-spacer>
     <v-footer app class="blue darken-3 pa-3 " dark>
       <v-layout justify-center row wrap>
@@ -181,7 +162,7 @@ export default {
       { icon: 'help', text: 'Help', name: 'help', link: '/help', auth: false }
     ],
     adminItems: [
-      {icon: 'person', text: 'Admin', name: 'admin', link: '/admin', auth: true}
+      {icon: 'supervisor_account', text: 'Admin', name: 'admin', link: '/admin', auth: true}
     ]
   }),
   props: {
@@ -196,7 +177,7 @@ export default {
 </script>
 
 <style scoped>
-  .border-red {
-    border-style: red 3px solid;
+  offset{
+    margin-left: 200px;
   }
 </style>

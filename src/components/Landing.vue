@@ -34,7 +34,8 @@
                   <v-alert :value="error.msg" type="error">
                       {{error.msg}}
                   </v-alert>
-                  <v-text-field prepend-icon="person" v-model="email" label="Login" type="text" :rules="emailRule"></v-text-field>
+
+                  <v-text-field  prepend-icon="person" v-model="email" label="Email" type="text" :rules="emailRule"></v-text-field>
                   <v-text-field  prepend-icon="lock" v-model="password" label="Password" type="password" :counter="6" :rules="passwordRule"></v-text-field>
                 </v-form>
               </v-card-text>

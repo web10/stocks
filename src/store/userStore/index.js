@@ -20,7 +20,7 @@ export default {
     async signUp ({commit}, payload) {
       let user = await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
       var userId = firebase.auth().currentUser.uid
-      firebase.database().ref('/user_details/' + userId).set({email: payload.email, 'role': 0}).then(snapshot => {
+      firebase.database().ref('/user_details/' + userId).set({firstName: payload.firstName, lastName: payload.lastName, mail: payload.email, 'role': 0}).then(snapshot => {
         return user
       })
     },

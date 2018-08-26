@@ -8,14 +8,14 @@
                 <td class="text-xs-left">{{ props.item.email }}</td>
                 <td class="text-xs-left">
                   <v-btn color="primary" outline small v-if="props.item.role == '0'" @click="changeAdmin(props.item)">Make Admin</v-btn>
-                  <v-btn color="primary" outline small v-if="props.item.role == '1'" @click="changeAdmin(props.item)">Remove Admin</v-btn>
+                  <v-btn color="secondary" outline small v-if="props.item.role == '1'" @click="changeAdmin(props.item)">Remove Admin</v-btn>
                 </td>
               </template>
             </v-data-table>
           </template>
         </v-flex>
       </v-layout>
-      
+
   </v-container>
 </template>
 <script>
@@ -48,4 +48,3 @@ export default {
   }
 }
 </script>
-
