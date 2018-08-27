@@ -29,7 +29,7 @@
                 <v-tab>Sign In</v-tab>
                 <v-tab>Register</v-tab>
                 <v-tab-item>
-                  <v-form ref="form" v-model="valid" lazy-validation>
+                  <!-- <v-form ref="form" v-model="valid" lazy-validation>
                     <v-card-text>
                       <v-form>
                         <v-alert :value="error.msg" type="error">
@@ -44,7 +44,8 @@
                       <v-spacer></v-spacer>
                       <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
                     </v-card-actions>
-                  </v-form>
+                  </v-form> -->
+                  <sign-up/>
                 </v-tab-item>
                 <v-tab-item>
                   <v-card>
@@ -101,8 +102,12 @@
         </v-layout>
 </template>
 <script>
+import SignUp from './Signup'
 export default {
   name: 'LandingPage',
+  components: {
+    'sign-up': SignUp
+  },
   data () {
     return {
       valid: true,
