@@ -29,7 +29,7 @@
                 <v-tab>Sign In</v-tab>
                 <v-tab>Register</v-tab>
                 <v-tab-item>
-                  <!-- <v-form ref="form" v-model="valid" lazy-validation>
+                  <v-form ref="form" v-model="valid" lazy-validation>
                     <v-card-text>
                       <v-form>
                         <v-alert :value="error.msg" type="error">
@@ -44,14 +44,13 @@
                       <v-spacer></v-spacer>
                       <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
                     </v-card-actions>
-                  </v-form> -->
-                  <sign-up/>
+                  </v-form>
                 </v-tab-item>
                 <v-tab-item>
                   <v-card>
                     <v-card-text>
                       <v-container>
-                        <v-form ref="form" v-model="valid" lazy-validation>
+                        <!-- <v-form ref="form" v-model="valid" lazy-validation>
                         <v-layout row>
                           <v-flex xs12>
                             <v-alert :value="error.msg" type="error">
@@ -91,7 +90,8 @@
                               <v-btn color="primary" @click="signUp()" :disabled="!valid">Sign Up</v-btn>
                             </v-flex>
                           </v-layout>
-                        </v-form>
+                        </v-form> -->
+                        <sign-up/>
                       </v-container>
                     </v-card-text>
                   </v-card>
