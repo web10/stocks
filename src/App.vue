@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
-      clipped=true
+      clipped
       v-model="drawer"
       app
       width="200"
@@ -66,8 +66,9 @@
         </template>
       </v-list>
     </v-navigation-drawer>
+    <!-- :clipped-left="$vuetify.breakpoint.lgAndUp" -->
     <v-toolbar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      
       color="blue darken-3"
       dark
       app

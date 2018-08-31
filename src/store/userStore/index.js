@@ -32,7 +32,10 @@ export default {
           }
           var userId = firebase.auth().currentUser.uid
           firebase.database().ref('/user_details/' + userId).once('value').then(snapshot => {
-            user.role = payload.email === 'admin@gmail.com' ? 1 : snapshot.val().role
+            let data = snapshot.val()
+            user.role = payload.email === 'admin@gmail.com' ? 1 : data.role
+            user.firstName = data.firstName
+            user.lastName = data.lastName
             resolve('done')
             commit('setUser', user)
           })

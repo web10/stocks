@@ -50,7 +50,7 @@
                   <v-card>
                     <v-card-text>
                       <v-container>
-                        <v-form ref="form" v-model="valid" lazy-validation>
+                        <!-- <v-form ref="form" v-model="valid" lazy-validation>
                         <v-layout row>
                           <v-flex xs12>
                             <v-alert :value="error.msg" type="error">
@@ -90,7 +90,8 @@
                               <v-btn color="primary" @click="signUp()" :disabled="!valid">Sign Up</v-btn>
                             </v-flex>
                           </v-layout>
-                        </v-form>
+                        </v-form> -->
+                        <sign-up/>
                       </v-container>
                     </v-card-text>
                   </v-card>
@@ -101,8 +102,12 @@
         </v-layout>
 </template>
 <script>
+import SignUp from './Signup'
 export default {
   name: 'LandingPage',
+  components: {
+    'sign-up': SignUp
+  },
   data () {
     return {
       valid: true,
