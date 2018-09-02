@@ -23,6 +23,8 @@
               <template>
                 <v-data-table :headers="headers" :items="adminList" hide-actions class="elevation-1">
                   <template slot="items" slot-scope="props">
+                    <td class="text-xs-left">{{ props.item.firstName }}</td>
+                    <td class="text-xs-left">{{ props.item.lastName }}</td>
                     <td class="text-xs-left">{{ props.item.email }}</td>
                     <td class="text-xs-left">
                       <v-btn color="primary" outline small v-if="props.item.role == '0'" @click="changeAdmin(props.item)">Make Admin</v-btn>
@@ -66,7 +68,10 @@ export default {
   },
   created () {
     this.fetchUser()
-    this.headers = [{text: 'Email Id', value: 'email', sortable: false},
+    this.headers = [
+              { text: 'First', value: 'firstName', sortable: true },
+              { text: 'Last', value: 'lastName', sortable: true },
+              { text: 'Email', value: 'email', sortable: true },
               { text: 'Action', value: 'action', sortable: false },
               { text: 'Delete', value: 'delete', sortable: false }
     ]

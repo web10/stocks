@@ -10,6 +10,19 @@
             <span class="ma-5, text-xs-center" >
               <img src="@/assets/avatar.png" height="180px" width="180px">
             </span>
+            <image-uploader
+              :debug="1"
+              :maxWidth="512"
+              :quality="0.7"
+              :autoRotate=true
+              outputFormat="verbose"
+              :preview=false
+              :className="['fileinput', { 'fileinput--loaded' : hasImage }]"
+              capture="environment"
+              @input="setImage"
+              @onUpload="startImageResize"
+              @onComplete="endImageResize">
+            </image-uploader>
           </v-layout>
         </v-card-media>
 
@@ -70,4 +83,3 @@ export default {
   }
 }
 </script>
-

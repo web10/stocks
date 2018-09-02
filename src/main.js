@@ -30,6 +30,7 @@ import {
   VDivider
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
+import { ImageUploader } from 'vue-image-upload-resize'
 
 Vue.use(Vuetify, {
   components: {
@@ -53,7 +54,8 @@ Vue.use(Vuetify, {
     VDataTable,
     VStepper,
     VProgressCircular,
-    VDivider
+    VDivider,
+    ImageUploader
   }
 })
 
