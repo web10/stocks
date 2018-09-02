@@ -1,17 +1,6 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-        <v-toolbar dark color="primary">
-          <v-toolbar-title>Registration Form</v-toolbar-title>
-        </v-toolbar>
-
-
-          <v-card-text>
             <v-container>
               <v-form ref="form" v-model="valid" lazy-validation>
-
               <v-layout row>
                 <v-flex xs12>
                   <v-alert :value="error.msg" type="error">
@@ -48,19 +37,14 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
+                    <spacer></spacer>
                     <v-btn color="primary" @click="signUp()" :disabled="!valid">Sign Up</v-btn>
                   </v-flex>
                 </v-layout>
               </v-form>
             </v-container>
-          </v-card-text>
-
-
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
 </template>
+
 <script>
 export default {
   name: 'SignUp',

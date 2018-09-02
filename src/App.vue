@@ -1,5 +1,6 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" class="front">
+
     <v-navigation-drawer
       clipped
       v-model="drawer"
@@ -68,11 +69,10 @@
     </v-navigation-drawer>
     <!-- :clipped-left="$vuetify.breakpoint.lgAndUp" -->
     <v-toolbar
-      
       color="blue darken-3"
       dark
       app
-      fixed
+      v-if="user"
     >
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -98,8 +98,8 @@
       </v-tooltip>
       <span v-if="user">{{user.email}}</span>
       <v-btn color="primary" dark v-if="auth" @click="signOut()">Logout</v-btn>
-
     </v-toolbar>
+
       <v-container fluid class="mt-5">
         <v-layout>
           <v-flex sm2 hidden-md-and-down>
@@ -107,26 +107,25 @@
           <v-flex sm12 lg11>
             <main>
               <router-view class="mt-5" v-if="!loading"></router-view>
-              <v-progress-circular indeterminate color="primary" style="margin-top: 10em;margin-left: 48em;" v-if="loading"></v-progress-circular>
+              <v-progress-circular indeterminate color="primary" style="margin-top: 10em;margin-left: 48em;" v-if="loading">
+              </v-progress-circular>
             </main>
           </v-flex>
         </v-layout>
       </v-container>
     <v-spacer></v-spacer>
-    <v-footer app class="blue darken-3 pa-3 " dark>
+
+    <v-footer app class="blue darken-3 pa-3 " dark v-if="user">
       <v-layout justify-center row wrap>
         <div>
-          &copy; <strong>App Template</strong> {{ new Date().getFullYear() }} |
+          &copy; <strong>App Template</strong> {{ new Date().getFullYear() }}  |
 
-          <span>  Team Login 1  |  </span>
-<!--
-          <v-tooltip top>
-            <span slot="activator" linkto="/admin" v-if="auth == item.auth"> Team Login 2 </span>
-          </v-tooltip>
--->
+          <span>  Team Login    </span>
+
         </div>
       </v-layout>
     </v-footer>
+
   </v-app>
 </template>
 
@@ -160,7 +159,7 @@ export default {
       { icon: 'notifications', text: 'Alerts', name: 'alerts', link: '/alerts', auth: true },
       { icon: 'settings', text: 'Settings', name: 'settings', link: '/settings', auth: true },
       { icon: 'chat_bubble', text: 'Messages', name: 'messages', link: '/messages', auth: true },
-      { icon: 'help', text: 'Help', name: 'help', link: '/help', auth: false }
+      { icon: 'help', text: 'Help', name: 'help', link: '/help', auth: true }
     ],
     adminItems: [
       {icon: 'supervisor_account', text: 'Admin', name: 'admin', link: '/admin', auth: true}
@@ -178,7 +177,9 @@ export default {
 </script>
 
 <style scoped>
-  offset{
-    margin-left: 200px;
+
+  .front {
+    background-size: cover;
+    background-image: url("../src/assets/bg-image.jpeg");
   }
 </style>

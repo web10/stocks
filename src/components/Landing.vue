@@ -1,27 +1,12 @@
 <template>
+<div class="landingpage">
     <v-layout row wrap>
           <v-flex xs8 md8>
-            <v-card height="700px" class="mx-5">
-              <v-card-media
-                class="white--text"
-                height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-              >
-                <v-container fill-height fluid>
-                  <v-layout fill-height>
-                    <v-flex xs12 align-end flexbox>
-                      <span class="headline">Your Main App Title</span>
-                    </v-flex>
-                  </v-layout>
-                </v-container>
-              </v-card-media>
-              <v-card-title>
-                <div>
-                  <span>"Your Message Motto Here"</span><br>
-                  <span>Anything else here</span>
-                </div>
-              </v-card-title>
-            </v-card>
+            <v-container text-xs-center>
+              <h1> Your Main App Title</h1>
+              <H2>"Your Message Motto Here"</H2><br>
+              <H3>Anything else here</H3>
+            </v-container>
           </v-flex>
           <v-flex xs4 md4>
             <v-card class="mx-5">
@@ -40,9 +25,7 @@
                       </v-form>
                     </v-card-text>
                     <v-card-actions>
-                      <v-btn color="primary" to="signup">Register</v-btn>
-                      <v-spacer></v-spacer>
-                      <v-btn color="primary" @click="signIn()" :disabled="!valid">Login</v-btn>
+                      <v-btn color="primary" @click="signIn()" :disabled="!valid" left>Login</v-btn>
                     </v-card-actions>
                   </v-form>
                 </v-tab-item>
@@ -50,47 +33,6 @@
                   <v-card>
                     <v-card-text>
                       <v-container>
-                        <!-- <v-form ref="form" v-model="valid" lazy-validation>
-                        <v-layout row>
-                          <v-flex xs12>
-                            <v-alert :value="error.msg" type="error">
-                              {{error.msg}}
-                          </v-alert>
-                            <v-text-field name="firstName" label="First Name" v-model="firstName" type="text"></v-text-field>
-                          </v-flex>
-                        </v-layout>
-                        <v-layout row>
-                          <v-flex xs12>
-                            <v-alert :value="error.msg" type="error">
-                              {{error.msg}}
-                          </v-alert>
-                            <v-text-field name="lastName" label="Last Name" v-model="lastName" type="text"></v-text-field>
-                          </v-flex>
-                        </v-layout>
-                          <v-layout row>
-                            <v-flex xs12>
-                              <v-alert :value="error.msg" type="error">
-                                {{error.msg}}
-                            </v-alert>
-                              <v-text-field name="email" label="Mail" v-model="email" type="email" :rules="emailRule"></v-text-field>
-                            </v-flex>
-                          </v-layout>
-                          <v-layout row>
-                            <v-flex xs12>
-                              <v-text-field name="password" label="Password" v-model="password" type="password" :counter="6" :rules="passwordRule"></v-text-field>
-                            </v-flex>
-                          </v-layout>
-                          <v-layout row>
-                            <v-flex xs12>
-                              <v-text-field name="confirmPassword" label="Confirm Password" v-model="confirmPassword" type="password" :rules="confirmPasswordRule"></v-text-field>
-                            </v-flex>
-                          </v-layout>
-                          <v-layout row>
-                            <v-flex xs12>
-                              <v-btn color="primary" @click="signUp()" :disabled="!valid">Sign Up</v-btn>
-                            </v-flex>
-                          </v-layout>
-                        </v-form> -->
                         <sign-up/>
                       </v-container>
                     </v-card-text>
@@ -100,6 +42,7 @@
             </v-card>
           </v-flex>
         </v-layout>
+  </div>
 </template>
 <script>
 import SignUp from './Signup'

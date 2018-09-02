@@ -28,6 +28,9 @@
                       <v-btn color="primary" outline small v-if="props.item.role == '0'" @click="changeAdmin(props.item)">Make Admin</v-btn>
                       <v-btn color="secondary" outline small v-if="props.item.role == '1'" @click="changeAdmin(props.item)">Remove Admin</v-btn>
                     </td>
+                    <td class="text-xs-left">
+                      <v-btn color="red" outline small>Delete</v-btn>
+                    </td>
                   </template>
                 </v-data-table>
               </template>
@@ -64,7 +67,8 @@ export default {
   created () {
     this.fetchUser()
     this.headers = [{text: 'Email Id', value: 'email', sortable: false},
-              { text: 'Action', value: 'action', sortable: false }
+              { text: 'Action', value: 'action', sortable: false },
+              { text: 'Delete', value: 'delete', sortable: false }
     ]
   },
   methods: {
@@ -80,6 +84,15 @@ export default {
         window.alert(error)
       })
     }
+
+    /*
+    deleteUser () {
+      this.$store.dispatch().then(
+
+      }, error => {
+        window.alert(error)
+      })
+    } */
   }
 }
 </script>
