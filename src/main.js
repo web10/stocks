@@ -71,25 +71,25 @@ new Vue({
   },
   template: '<App/>',
   created () {
+    /* config for Vue template - realtime database */
     let config = {
-      /*  Alk firebase setting
-      apiKey: 'AIzaSyBqUfXzta0ZsTcwHUtZsX6azFScIdf2UUU',
-      authDomain: 'react-event.firebaseapp.com',
-      databaseURL: 'https://react-event.firebaseio.com',
-      projectId: 'react-event',
-      storageBucket: 'react-event.appspot.com',
-      messagingSenderId: '610338161838'
-        alk firebase end */
-
-      /* Danh's Veutify-template Firebase setting */
       apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
       authDomain: 'vuetify-template-c69fb.firebaseapp.com',
       databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
       projectId: 'vuetify-template-c69fb',
       storageBucket: 'vuetify-template-c69fb.appspot.com',
       messagingSenderId: '361467220892'
-       /* Danh's Veutify-template Firebase setting  end */
     }
+    /* config for stocks app
+    let config = {
+      apiKey: 'AIzaSyCfkyhlgX60zul12wjxIDT2B-hD8-blqe0',
+      authDomain: 'stocks-e9e75.firebaseapp.com',
+      databaseURL: 'https://stocks-e9e75.firebaseio.com',
+      projectId: 'stocks-e9e75',
+      storageBucket: 'stocks-e9e75.appspot.com',
+      messagingSenderId: '597438893177'
+    } */
+
     firebase.initializeApp(config)
     this.$store.dispatch('setLoadin', true)
     firebase.auth().onAuthStateChanged(user => {

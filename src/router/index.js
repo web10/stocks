@@ -1,20 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Intro from '@/components/Intro'
-import Page1 from '@/components/Page1'
-import Page2 from '@/components/Page2'
-import Page3 from '@/components/Page3'
-import Page4 from '@/components/Page4'
-import Page5 from '@/components/Page5'
-import Profile from '@/components/Profile'
-import Alerts from '@/components/Alerts'
-import Settings from '@/components/Settings'
-import Messages from '@/components/Messages'
-import Help from '@/components/Help'
+import Intro from '@/components/Members/Intro'
+import Stocks from '@/components/Members/Stocks'
+import Partner from '@/components/Members/Partner'
+import WatchList from '@/components/Members/WatchList'
+import Robots from '@/components/Members/Robots'
+import Subscriptions from '@/components/Members/Subscriptions'
+import Profile from '@/components/Members/Profile'
+import Alerts from '@/components/Members/Alerts'
+import Settings from '@/components/Members/Settings'
+import Messages from '@/components/Members/Messages'
+import Help from '@/components/Members/Help'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
 import Landing from '@/components/Landing'
-import Admin from '@/components/Admin'
+import Admin from '@/components/Admin/Admin'
+import Staff from '@/components/Admin/Staff'
 import store from '../store'
 
 Vue.use(Router)
@@ -53,39 +54,48 @@ export default new Router({
       }
     },
     {
+      path: '/staff',
+      name: 'Staff',
+      component: Staff,
+      beforeEnter: ifAuthenticated,
+      meta: {
+        adminRole: true
+      }
+    },
+    {
       path: '/intro',
       name: 'intro',
       component: Intro,
       beforeEnter: ifAuthenticated
     },
     {
-      path: '/page1',
-      name: 'page1',
-      component: Page1,
+      path: '/stocks',
+      name: 'Stocks',
+      component: Stocks,
       beforeEnter: ifAuthenticated
     },
     {
-      path: '/page2',
-      name: 'Page2',
-      component: Page2,
+      path: '/partner',
+      name: 'Partner',
+      component: Partner,
       beforeEnter: ifAuthenticated
     },
     {
-      path: '/page3',
-      name: 'Page3',
-      component: Page3,
+      path: '/watchlist',
+      name: 'WatchList',
+      component: WatchList,
       beforeEnter: ifAuthenticated
     },
     {
-      path: '/page4',
-      name: 'Page4',
-      component: Page4,
+      path: '/robots',
+      name: 'Robots',
+      component: Robots,
       beforeEnter: ifAuthenticated
     },
     {
-      path: '/page5',
-      name: 'Page5',
-      component: Page5,
+      path: '/subscriptions',
+      name: 'Subscriptions',
+      component: Subscriptions,
       beforeEnter: ifAuthenticated
     },
     {
