@@ -9,6 +9,9 @@
 # install dependencies
 npm install
 
+# import data from json file to firestore
+npm run import
+
 # serve with hot reload at localhost:8080
 npm run dev
 

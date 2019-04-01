@@ -1,6 +1,4 @@
-import firebase from 'firebase'
-import 'firebase/firestore'
-
+import { fireStore } from '../../../firebaseConfig'
 export default {
   state: {},
   mutations: {},
@@ -9,9 +7,8 @@ export default {
     /* Fetch all stock */
     getAllStock ({commit}, payload) {
       return new Promise((resolve, reject) => {
-        const firestore = firebase.firestore()
-        firestore.settings({timestampsInSnapshots: true})
-        firestore.collection('stocks').get().then(snap => {
+        fireStore.settings({timestampsInSnapshots: true})
+        fireStore.collection('stock').get().then(snap => {
           let stockList = []
           snap.forEach(doc => {
             stockList.push(doc.data())
