@@ -1,0 +1,176 @@
+{
+  "users": {
+    "0": {
+      "firstName": "Danh",
+      "lastName": "Nguyen",
+      "email": "test@demo.com"
+    },
+    "1": {
+      "firstName": "Run",
+      "lastName": "Demo",
+      "email": "run@demo.com"
+    }
+  },
+  "stock" : {
+    "0": {
+      "symbol": "A",
+      "name": "Agilent Technologies Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "2"
+    },
+    "1": {
+      "symbol": "AA",
+      "name": "Alcoa Corporation",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "12042"
+    },
+    "2": {
+      "symbol": "AAAU",
+      "name": "Perth Mint Physical Gold",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "N/A",
+      "iexId": "14924"
+    },
+    "3": {
+      "symbol": "AABA",
+      "name": "Altaba Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "7653"
+    },
+    "5": {
+      "symbol": "AAC",
+      "name": "AAC Holdings Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "9169"
+    },
+    "6": {
+      "symbol": "AADR",
+      "name": "AdvisorShares Dorsey Wright ADR",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "et",
+      "iexId": "5"
+    },
+    "7": {
+      "symbol": "AAL",
+      "name": "American Airlines Group Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "8148"
+    },
+    "8": {
+      "symbol": "AAMC",
+      "name": "Altisource Asset Management Corp Com",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "7760"
+    },
+    "9": {
+      "symbol": "AAME",
+      "name": "Atlantic American Corporation",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "7"
+    },
+    "10": {
+      "symbol": "AAN",
+      "name": "Aaron's Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "8"
+    },
+    "11": {
+      "symbol": "AAOI",
+      "name": "Applied Optoelectronics Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "7790"
+    },
+    "12": {
+      "symbol": "AAON",
+      "name": "AAON Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "9"
+    },
+    "13": {
+      "symbol": "AAP",
+      "name": "Advance Auto Parts Inc W/I",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "10"
+    },
+    "14": {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "11"
+    },
+    "15": {
+      "symbol": "AAT",
+      "name": "American Assets Trust Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "12"
+    },
+    "16": {
+      "symbol": "AAU",
+      "name": "Almaden Minerals Ltd.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "13"
+    },
+    "17": {
+      "symbol": "AAWW",
+      "name": "Atlas Air Worldwide Holdings",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "15"
+    },
+    "18": {
+      "symbol": "AAXJ",
+      "name": "iShares MSCI All Country Asia ex Japan Index Fund",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "et",
+      "iexId": "16"
+    },
+    "19": {
+      "symbol": "AAXN",
+      "name": "Axon Enterprise Inc.",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "6667"
+    },
+    "20": {
+      "symbol": "AB",
+      "name": "AllianceBernstein Holding L.P. Units",
+      "date": "2019-01-31",
+      "isEnabled": true,
+      "type": "cs",
+      "iexId": "17"
+    }
+  }
+}
