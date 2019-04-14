@@ -16,6 +16,22 @@ export default {
           resolve(stockList)
         })
       })
+    },
+
+    getChartData ({commit}, payload) {
+      return new Promise((resolve, reject) => {
+        fireStore.settings({timestampsInSnapshots: true})
+        fireStore.collection('stock-test').get().then(snap => {
+          let stockList = []
+          snap.forEach(doc => {
+            stockList.push({
+              date: doc.id,
+              value: doc.data()
+            })
+          })
+          resolve(stockList)
+        })
+      })
     }
   }
 }
