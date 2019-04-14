@@ -2,12 +2,12 @@ import firebase from 'firebase'
 
 /* config for Vue template - realtime database */
 let config = {
-  apiKey: "AIzaSyCxZojw9EvyHdQvusieLHg-NvsPRIv2GvQ",
-  authDomain: "vue-firebase-tutorial-f2e9c.firebaseapp.com",
-  databaseURL: "https://vue-firebase-tutorial-f2e9c.firebaseio.com",
-  projectId: "vue-firebase-tutorial-f2e9c",
-  storageBucket: "vue-firebase-tutorial-f2e9c.appspot.com",
-  messagingSenderId: "259411002381"
+  apiKey: 'AIzaSyA6q3Cx9io25_OSYKgOZtAs1YrvugRG2bA',
+  authDomain: 'vuetify-template-c69fb.firebaseapp.com',
+  databaseURL: 'https://vuetify-template-c69fb.firebaseio.com',
+  projectId: 'vuetify-template-c69fb',
+  storageBucket: 'vuetify-template-c69fb.appspot.com',
+  messagingSenderId: '361467220892'
 }
 /* config for stocks app
  let config = {
