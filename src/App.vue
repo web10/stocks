@@ -77,7 +77,7 @@
 
       <v-container fluid>
         <v-layout>
-          <v-flex sm3 hidden-sm-and-down v-if="user">
+          <v-flex sm2 hidden-sm-and-down v-if="user">
           </v-flex>
           <v-flex sm12 lg11>
             <main>
