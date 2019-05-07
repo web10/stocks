@@ -7,7 +7,7 @@ const cors = require('cors')({origin: true});
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&outputsize=full&apikey=demo';
+const url = 'https://www.alphavantage.co/query?function=SMA&symbol=MSFT&interval=daily&time_period=10&series_type=open&apikey=Z3O79INYJG77Y1SF';
 
 // Functions for firestore.
 exports.fetchNewSymbol = functions.https.onRequest((request, response) => {
@@ -36,6 +36,56 @@ exports.fetchNewSymbol = functions.https.onRequest((request, response) => {
             });
           }
           response.send('Stock Updated!!');
+      })
+      .catch(e => {
+        console.log( "error: ", e);
+        response.send('error');
+      })
+  })
+})
+
+exports.fetchSymbolData = functions.https.onRequest((request, response) => {
+
+  response.set('Access-Control-Allow-Origin', '*')
+  response.set('Access-Control-Allow-Headers', '*')
+
+  cors(request, response, () => {
+    axios.get(url)
+      .then(symbolData => {
+        // Insert Stock Data in firestore
+        const nestedContent = symbolData.data["Technical Analysis: SMA"];
+        if (typeof nestedContent === "object") {
+          Object.keys(nestedContent).forEach(docTitle => {
+            admin.firestore()
+              .collection('symbols')
+              .doc('MSFT')
+              .collection('SMA')
+              .doc(docTitle)
+              .set(nestedContent[docTitle])
+              .then((res) => {
+                console.log('SMA')
+              })
+          });
+        }
+        return axios.get('https://www.alphavantage.co/query?function=RSI&symbol=MSFT&interval=daily&time_period=10&series_type=open&apikey=Z3O79INYJG77Y1SF');
+      })
+      .then((symbolData) => {
+        // Insert Stock Data in firestore
+        const nestedContent = symbolData.data["Technical Analysis: RSI"];
+        if (typeof nestedContent === "object") {
+          Object.keys(nestedContent).forEach(docTitle => {
+            admin.firestore()
+              .collection('symbols')
+              .doc('MSFT')
+              .collection('RSI')
+              .doc(docTitle)
+              .set(nestedContent[docTitle])
+              .then((res) => {
+                console.log("RSI")
+              })
+          });
+        }
+        response.send('Stock Updated!!');
       })
       .catch(e => {
         console.log( "error: ", e);
